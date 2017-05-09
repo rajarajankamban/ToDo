@@ -1,7 +1,7 @@
 
 <div class="input-field col s6">
     <h4>{{title}}</h4>
-          <input placeholder="Enter your task" id="task" #task (keyup.enter)="addTaskToDo(task.value)" type="text" class="validate">
+          <input placeholder="Enter your task" id="task" #task (keyup.enter)="addTaskToDo(task.value);task.value=''" type="text" class="validate">
 
 <p *ngFor="let list of checkList">
   <input type="checkbox" #todo />

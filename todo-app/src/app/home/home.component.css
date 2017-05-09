@@ -1,0 +1,11 @@
+.add-btn{
+    float:left;
+    position: relative;
+    top: 36px;
+    left: 50px;
+}
+
+.show{
+    display: block;
+    z-index: 1;
+}

@@ -1,9 +1,26 @@
-<div>  
-  <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+<div class='add-btn'>  
+  <a class="btn-floating btn-large waves-effect waves-light red" (click)="showAddPopUp()"><i class="material-icons">add</i></a>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal" [class.show]='isAddPopUpEnabled'>
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+        <div class="input-field col s12">
+          <input placeholder="Enter Title Here"  type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <input placeholder="Enter Category"  type="text" class="validate">
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" [class.modal-close]='isAddPopUpEnabled' (click)="showAddPopUp()">OK</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" [class.modal-close]='isAddPopUpEnabled' (click)="showAddPopUp()">Cancel</a>
+    </div>
+  </div>
 </div>
 <div class="container">
   <div class="row">
-    <app-todo-list title="Project" [checkList]="toDoListProject" (addedNewList)="addToDoListProject($event)"></app-todo-list>
-    <app-todo-list title="Personal" [checkList]="toDoListPersonal" (addedNewList)="addToDoListPersonal($event)"></app-todo-list>
+    <app-todo-list title="Project" [checkList]="this.toDoService.getTaskByCategory('project')" (addedNewList)="addToDoList($event,'project')"></app-todo-list>
+    <app-todo-list title="Personal" [checkList]="this.toDoService.getTaskByCategory('personal')" (addedNewList)="addToDoList($event,'personal')"></app-todo-list>
   </div>
 </div>
+

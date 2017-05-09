@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToDoList } from '../models/todoList';
 import {TodoService} from '../todo.service';
 
+import {ToDo} from '../models/todo';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,25 +15,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      this.toDoService.fetchToDoData();
-     console.log(this.toDoService.getToDoByCategory("project"));
+     this.toDoService.getTaskByCategory("project");
   }
 
-  toDoListProject : ToDoList[] = [];
-  toDoListPersonal : ToDoList[] = [];
+  isAddPopUpEnabled : boolean = false;
+  todo : ToDo[] = [];
+  showAddPopUp(){
+    this.isAddPopUpEnabled = this.isAddPopUpEnabled==true ? false : true;
+  }
   
-  
-
-  addToDoListProject(value:string){
-    console.log(value);
-    this.toDoListProject.push(new ToDoList(value,'Project'));
+  addToDoList(value:string,category : string){
+   this.toDoService.addTaskToDoList(value,category); 
   }
 
-  addToDoListPersonal(value:string){
-    this.toDoListPersonal.push(new ToDoList(value,'Personal'));
-  }
 
-  fethToDoListProject(){
-   
-  }
 
 }

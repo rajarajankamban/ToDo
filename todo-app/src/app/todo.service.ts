@@ -17,15 +17,30 @@ export class TodoService {
         let response = data.json();
         for(let i=0; i<key.length; i++){
           this.toDoList.push(response[key[i]]);
-          console.log(response[key[i]].category);
         }
       } 
       );
       return this.toDoList;
   }
 
-  getToDoByCategory(category : string){
+  getTaskByCategory(category : string){
     return this.toDoList.filter(data => data.category === category);
   }
+
+  addTaskToDoList(name : string, category :string){
+    this.postTask(new ToDoList(name,category));
+  }
+
+  postTask(todolist : ToDoList ){
+    this.http.post(this.fullPath,todolist).subscribe(
+      data => {
+        console.log(data);
+        this.toDoList.push(todolist);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
 
 }
