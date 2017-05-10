@@ -4,7 +4,9 @@ export class ToDoList{
         this.startDate  = new Date().getTime();
         this.category = category;
         this.isDone =  false;
+        this.id = '';
     }
+    id: string;
     value : string ;
     startDate : number;
     endDate : number;

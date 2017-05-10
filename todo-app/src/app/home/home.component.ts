@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private toDoService : TodoService) { }
 
   ngOnInit() {
-     this.toDoService.fetchToDoData();
+     
      this.toDoService.getTaskByCategory("project");
   }
 
@@ -28,6 +28,11 @@ export class HomeComponent implements OnInit {
    this.toDoService.addTaskToDoList(value,category); 
   }
 
+  createToDoList(title : string, category : string){
+    this.todo.push(new ToDo(title, category));
+  }
 
-
+  moveToArchieve(todo : ToDoList){
+    this.toDoService.moveToArchieve(todo);
+  }
 }
