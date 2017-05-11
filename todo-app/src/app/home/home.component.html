@@ -7,13 +7,10 @@
         <div class="input-field col s12">
           <input placeholder="Enter Title Here" id='add_title' #add_title type="text" class="validate">
         </div>
-        <div class="input-field col s12">
-          <input placeholder="Enter Category" id='add_category' #add_category type="text" class="validate">
-        </div>
     </div>
     <div class="modal-footer">
-      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal(); createToDoList(add_title.value,add_category.value);">OK</a>
-      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal(); createToDoList(add_title.value,add_category.value);">Cancel</a>
+      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal(); createToDoList(add_title.value);">OK</a>
+      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal();">Cancel</a>
     </div>
   </div>
 </div>

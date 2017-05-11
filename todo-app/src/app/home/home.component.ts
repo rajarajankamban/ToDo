@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
     this.toDoService.toDoList$.subscribe(data => {
       this.todolist = data;
     })
+    
+    this.toDoService.parentcard$.subscribe(data => {
+      this.parentCard = data;
+    })
   }
 
   isAddPopUpEnabled : boolean = false;
@@ -53,8 +57,8 @@ export class HomeComponent implements OnInit {
 //Todo List Actions ends
 
 /*Parent Card Actions starts*/
-  createParentCard(title : string, category : string){
-    
+  createParentCard(title : string){
+    this.toDoService.createParentCard(new ParentCard(title));
   }
 
 /*Parent Card Actions ends*/
