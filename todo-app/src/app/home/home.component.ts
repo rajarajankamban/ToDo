@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ToDoList } from '../models/todoList';
 import {TodoService} from '../todo.service';
 import {Observable} from 'rxjs/Observable';
+import {MaterializeAction} from 'angular2-materialize';
 
-import {ToDo} from '../models/todo';
+import {ParentCard} from '../models/parentCard';
 
 @Component({
   selector: 'app-home',
@@ -21,16 +22,23 @@ export class HomeComponent implements OnInit {
   }
 
   isAddPopUpEnabled : boolean = false;
-  todo : ToDo[] = [];
+  parentCard : ParentCard[] = [];
   todolist : ToDoList[] = [];
-  
+  modalActions = new EventEmitter<string|MaterializeAction>();
   
 
-  showAddPopUp(){
-    this.isAddPopUpEnabled = this.isAddPopUpEnabled==true ? false : true;
-  }
   
-  //Get Task By category
+/*MaterializeAction*/
+  openModal() {
+    this.modalActions.emit({action:"modal",params:['open']});
+  }
+
+   closeModal() {
+    this.modalActions.emit({action:"modal",params:['close']});
+  }
+/*MaterializeAction*/
+
+//Todo List Actions starts
   getTaskByCategory(category : string){
     return this.todolist.filter(data=>data.category === category && data.isDone===false);
   }
@@ -38,12 +46,17 @@ export class HomeComponent implements OnInit {
   addToDoList(value:string,category : string){
    this.toDoService.addTaskToDoList(value,category); 
   }
-
-  createToDoList(title : string, category : string){
-    this.todo.push(new ToDo(title, category));
-  }
-
   moveToArchieve(todo : ToDoList){
     this.toDoService.moveToArchieve(todo);
   }
+
+//Todo List Actions ends
+
+/*Parent Card Actions starts*/
+  createParentCard(title : string, category : string){
+    
+  }
+
+/*Parent Card Actions ends*/
+  
 }

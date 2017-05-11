@@ -88,16 +88,19 @@ export class TodoService {
 
   moveFromArchieve(toDo : ToDoList){
    let item: ToDoList = Object.assign({},toDo);
-    
+    item.isDone = false;
+    item.endDate = new Date().getTime();
      this.http.put(`${this.fullPath}/${toDo.id}.json`,item).subscribe(
        data => {
         let toDoList :ToDoList[] = this.toDoListSubject.getValue();
          _.mapValues(toDoList,todo=>{
             if(todo.id == item.id){
+              console.log(todo.value);
               todo.isDone = false;
               todo.endDate = new Date().getTime();
             }
          });
+         console.log(toDoList);
          this.toDoListSubject.next(toDoList);
       }, err => {
         console.log(err);

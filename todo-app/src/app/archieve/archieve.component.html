@@ -1,5 +1,5 @@
  <div class="row">
-        <div class="col s12 " *ngFor="let list of this.getArchieve()">
+        <div class="col s6 " *ngFor="let list of this.getArchieve()">
           <div class="card ">
             <div class="card-content ">
               <div class="card-title pull-left" [innerHTML]='list.value'></div>
@@ -14,15 +14,15 @@
               
             </div>
             <div class="card-action">
-              <span class="">
-                <i class="small material-icons pull-left">query_builder</i>
-                <span>Start Date : {{list.startDate | date:'medium'}}</span> 
-              </span>
+              <div class="">
+                <i class="small material-icons ">query_builder</i>
+                <span class="date">Start Date : {{list.startDate | date:'medium'}}</span> 
+              </div>
 
-              <span class="">
-                 <span class="pull-right">End Date : {{list.endDate | date:'medium'}}</span>
-                <i class="small material-icons pull-right">query_builder</i> 
-              </span>
+              <div class="">
+                <i class="small material-icons ">query_builder</i> 
+                 <span class="date">End Date : {{list.endDate | date:'medium'}}</span>
+              </div>
             </div>
           </div>
         </div>

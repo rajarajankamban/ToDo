@@ -1,6 +1,10 @@
 .card .card-content .card-title{
-    width: 92%;
+    width: 80%;
 }
 .arc-icon{
     cursor: pointer;
+}
+.card-action .date{
+    position: relative;
+    top: -10px;
 }

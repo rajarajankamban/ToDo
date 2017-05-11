@@ -1,7 +1,7 @@
 .add-btn{
     float:left;
-    position: relative;
-    top: 36px;
+    position: absolute;
+    top: 102px;
     left: 50px;
 }
 
