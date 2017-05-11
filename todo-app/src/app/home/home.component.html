@@ -19,8 +19,8 @@
 </div>-->
 
   <div class="row">
-    <app-todo-list title="Project" [checkList]="this.toDoService.getTaskByCategory('project')" (addedNewList)="addToDoList($event,'project')" (modifyList)="moveToArchieve($event)"></app-todo-list>
-    <app-todo-list title="Personal" [checkList]="this.toDoService.getTaskByCategory('personal')" (addedNewList)="addToDoList($event,'personal')" (modifyList)="moveToArchieve($event)" ></app-todo-list>
+    <app-todo-list title="Project" [checkList]="this.getTaskByCategory('project')" (addedNewList)="addToDoList($event,'project')" (modifyList)="moveToArchieve($event)"></app-todo-list>
+    <app-todo-list title="Personal" [checkList]="this.getTaskByCategory('personal')" (addedNewList)="addToDoList($event,'personal')" (modifyList)="moveToArchieve($event)" ></app-todo-list>
     <app-todo-list *ngFor="let comp of todo" ></app-todo-list>
 </div>
 

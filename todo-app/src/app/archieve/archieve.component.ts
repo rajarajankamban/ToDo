@@ -11,9 +11,15 @@ export class ArchieveComponent implements OnInit {
   constructor(private toDoService : TodoService) { }
 
   ngOnInit() {
-
+     this.toDoService.toDoList$.subscribe(data => {
+      this.toDoList = data;
+    })
   }
   toDoList : ToDoList[];
+
+  getArchieve(){
+    return this.toDoList.filter(data => data.isDone == true);
+  }
 
   delete(todo : ToDoList){
     this.toDoService.deleteTask(todo);
