@@ -1,14 +1,22 @@
  <div class="row">
-        <div class="col s6 " *ngFor="let list of this.getArchieve()">
-          <div class="card ">
+        <div class="clear-fix" *ngFor="let card of parentCard">
+          <div *ngIf="this.checkTask(card)" style="overflow: auto;">
+          <div class="pull-left">
+             <h4  [innerHtml]="card.value"></h4>
+          </div>
+            <div class="pull-right" style=" padding-top: 16px; padding-bottom: 16px;">
+              <a class="waves-effect waves-light btn ">Delete</a>
+            </div>
+          </div>
+          <div class="card col s6" *ngFor="let list of this.getArchieve(card.todolist)">
             <div class="card-content ">
               <div class="card-title pull-left" [innerHTML]='list.value'></div>
               <div class="">
                 <span class="arc-icon">
-                  <i class="small material-icons" (click)="delete(list)">delete</i>
+                  <i class="small material-icons" (click)="delete(card,list)">delete</i>
                 </span>
-                <span class="arc-icon">
-                  <i class="small material-icons" (click)="restore(list)">restore</i>
+                <span class="arc-icon" style="margin-left: 25px;">
+                  <i class="small material-icons" (click)="restore(card,list)">restore</i>
                 </span>
               </div>
               

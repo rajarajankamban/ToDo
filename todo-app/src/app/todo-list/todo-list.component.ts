@@ -15,10 +15,10 @@ export class TodoListComponent implements OnInit {
 
   @Input() title : string;
   @Input() checkList : ToDoList[];
-  @Output() addedNewList: EventEmitter <string> = new EventEmitter();
+  @Output() addNewTask: EventEmitter <string> = new EventEmitter();
   @Output() modifyList: EventEmitter <ToDoList> = new EventEmitter();
   addTaskToDo(value : string){
-    this.addedNewList.emit(value);
+    this.addNewTask.emit(value);
   }
 
   moveToArchieve(todo : ToDoList){

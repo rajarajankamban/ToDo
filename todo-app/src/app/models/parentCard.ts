@@ -7,7 +7,8 @@ export class ParentCard{
         this.endDate = null;
         this.isDone =  false;
         this.id = '';
-        this.todolist = <ToDoList[]>[];
+        this.todolist = [];
+        console.log(this.todolist);
     }
     id: string;
     value : string ;

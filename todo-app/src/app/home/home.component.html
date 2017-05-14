@@ -5,11 +5,11 @@
     <div class="modal-content">
       <h4>Create new list</h4>
         <div class="input-field col s12">
-          <input placeholder="Enter Title Here" id='add_title' #add_title type="text" class="validate">
+          <input placeholder="Enter Title Here" id='add_title' #add_title type="text" class="validate" (keyup.enter)="createParentCard(add_title.value); add_title.value=''; closeModal();">
         </div>
     </div>
     <div class="modal-footer">
-      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal(); createToDoList(add_title.value);">OK</a>
+      <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal(); createParentCard(add_title.value);">OK</a>
       <a  class="modal-action modal-close waves-effect waves-green btn-flat"  (click)="closeModal();">Cancel</a>
     </div>
   </div>
@@ -17,8 +17,8 @@
 
 
   <div class="row">
-    <app-todo-list title="Project" [checkList]="this.getTaskByCategory('project')" (addedNewList)="addToDoList($event,'project')" (modifyList)="moveToArchieve($event)"></app-todo-list>
-    <app-todo-list title="Personal" [checkList]="this.getTaskByCategory('personal')" (addedNewList)="addToDoList($event,'personal')" (modifyList)="moveToArchieve($event)" ></app-todo-list>
-    <!--app-todo-list *ngFor="let comp of createParentCard" ></app-todo-list-->
-</div>
+    <!--<app-todo-list title="Project" [checkList]="this.getTaskByCategory('project')" (addedNewList)="addToDoList($event,'project')" (modifyList)="moveToArchieve($event)"></app-todo-list>
+    <app-todo-list title="Personal" [checkList]="this.getTaskByCategory('personal')" (addedNewList)="addToDoList($event,'personal')" (modifyList)="moveToArchieve($event)" ></app-todo-list>-->
+    <app-todo-list *ngFor="let card of parentCard" class="col s2 card" [title]="card.value" [checkList]="getTask(card)" (addNewTask)="addTask($event,card)" (modifyList)="moveToArchieve($event,card)" ></app-todo-list>
+   </div>
 
