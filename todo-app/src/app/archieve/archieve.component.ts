@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {TodoService} from '../todo.service';
 import { ToDoList } from '../models/todoList';
 import { ParentCard } from '../models/parentCard';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'app-archieve',
   templateUrl: './archieve.component.html',
@@ -16,6 +19,9 @@ export class ArchieveComponent implements OnInit {
       this.parentCard = data;
     })
   }
+
+  searchStringSub: BehaviorSubject<string>;
+
   parentCard: ParentCard[] = [];
   getArchieve(toDoList : ToDoList[]){
     // console.log(toDoList);
