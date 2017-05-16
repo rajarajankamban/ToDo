@@ -4,7 +4,7 @@
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
       </div>
-        <div class="clear-fix" *ngFor="let card of parentCard">
+        <div class="clear-fix" *ngFor="let card of archiveList$ | async">
           <div *ngIf="this.checkTask(card)" style="overflow: auto;">
           <div class="pull-left">
              <h4  [innerHtml]="card.value"></h4>

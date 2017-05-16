@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.toDoService.parentcard$.subscribe(data => {
+      console.log("Home Parent subscribe");
       this.parentCard = data;
     })
   }

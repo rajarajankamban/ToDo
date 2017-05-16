@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable,BehaviorSubject} from 'rxjs';
+
 
 import {ParentCard} from './models/parentCard';
 import { ToDoList } from './models/todoList';
@@ -82,7 +82,7 @@ export class TodoService {
    dumCard.todolist.push(dumToDo);
     this.http.put(`${this.fullPath}/${card.id}.json`,dumCard).subscribe(
       data => {
-        let temp :ParentCard[] = this.parentcardSubject.getValue();
+        /*let temp :ParentCard[] = this.parentcardSubject.getValue();
          _.mapValues(temp, tempcard=>{
             if(tempcard.id == dumCard.id){
              if(tempcard.todolist == undefined){
@@ -91,7 +91,7 @@ export class TodoService {
               tempcard.todolist.push(dumToDo);
             }
           });
-           this.parentcardSubject.next(temp);
+           this.parentcardSubject.next(temp);*/
       }, err => {
         console.log(err);
       }

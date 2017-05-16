@@ -12,14 +12,21 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ArchieveComponent implements OnInit {
 
-  constructor(private toDoService : TodoService) { }
-
-  ngOnInit() {
-    this.toDoService.parentcard$.subscribe(data => {
-      this.parentCard = data;
-    })
+  constructor(private toDoService : TodoService) { 
+     this.searchStringSub = new BehaviorSubject('');
   }
 
+  ngOnInit() {
+   
+     this.archiveList$ = this.toDoService.parentcard$
+     .combineLatest(this.searchStringSub,(list,searchString)=>{
+       console.log(list.filter(card => card.todolist.filter(todo => todo.isDone && todo.value.includes(searchString))));
+      return list.filter(card => card.todolist.filter(todo => todo.isDone && todo.value.includes(searchString)));
+     })
+
+     this.archiveList$.subscribe(data => console.log(data));
+  }
+  archiveList$: Observable<ParentCard[]>;
   searchStringSub: BehaviorSubject<string>;
 
   parentCard: ParentCard[] = [];
@@ -47,4 +54,9 @@ export class ArchieveComponent implements OnInit {
     return false;
    }
   }
+
+    onKeyUp(searchStr: string) {
+      this.searchStringSub.next(searchStr);
+    }
+
 }
